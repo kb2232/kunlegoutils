@@ -8,8 +8,8 @@ import (
 func GetUserInputs(promptMsg string) (string, error) {
 	fmt.Print(promptMsg)
 	var value string
-	_, err := fmt.Scan(&value)
-	if err != nil || value == "" {
+	_, err := fmt.Scanln(&value)
+	if err != nil {
 		println(err)
 		return "", errors.New("invalid input")
 	}
