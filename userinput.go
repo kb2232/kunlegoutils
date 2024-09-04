@@ -1,12 +1,21 @@
 package utils
 
 import (
+	"bufio"
 	"fmt"
+	"os"
+	"strings"
 )
 
 func GetUserInputs(promptMsg string) string {
 	fmt.Print(promptMsg)
-	var value string
-	fmt.Scanln(&value) //we do not need error from scan
-	return value
+	reader := bufio.NewReader(os.Stdin)
+	text, err := reader.ReadString('\n')
+	if err != nil {
+		return ""
+	}
+	text = strings.TrimSuffix(text, "\n") //remove endline
+	text = strings.TrimSuffix(text, "\r") //remove endline in windows
+
+	return text
 }
