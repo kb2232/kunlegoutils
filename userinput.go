@@ -1,17 +1,12 @@
 package utils
 
 import (
-	"errors"
 	"fmt"
 )
 
-func GetUserInputs(promptMsg string) (string, error) {
+func GetUserInputs(promptMsg string) string {
 	fmt.Print(promptMsg)
 	var value string
-	_, err := fmt.Scanln(&value)
-	if err != nil {
-		println(err)
-		return "", errors.New("invalid input")
-	}
-	return value, nil
+	fmt.Scanln(&value) //we do not need error from scan
+	return value
 }
