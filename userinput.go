@@ -7,8 +7,8 @@ import (
 	"strings"
 )
 
-func GetUserInputs(promptMsg string) string {
-	fmt.Printf("%v ", promptMsg)
+func GetUserInputs(promptMsg interface{}) string {
+	fmt.Printf("%v: ", promptMsg)
 	reader := bufio.NewReader(os.Stdin)
 	text, err := reader.ReadString('\n')
 	if err != nil {
